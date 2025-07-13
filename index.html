@@ -53,3 +53,134 @@
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Malla Interactiva Medicina</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f8;
+      padding: 20px;
+    }
+    h2 {
+      color: #4b0082;
+    }
+    .periodo {
+      margin-bottom: 30px;
+    }
+    .clases {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .clase {
+      background-color: #6a0dad;
+      color: white;
+      border-radius: 10px;
+      padding: 15px;
+      width: 220px;
+      transition: 0.3s ease;
+      cursor: pointer;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .clase.activa {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .clase.completada {
+      background-color: #ccc;
+      text-decoration: line-through;
+      color: #333;
+    }
+    .codigo {
+      font-weight: bold;
+    }
+    .uv {
+      font-size: 14px;
+    }
+    .req {
+      font-size: 12px;
+      color: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h1>Malla Interactiva - Medicina</h1>
+
+  <div id="contenedor"></div>
+
+  <script>
+    const datos = [
+      { periodo: "1er Año - 1er Periodo", clases: [
+        {codigo: "FS-111", nombre: "Física Médica", uv: 4},
+        {codigo: "QQ-111", nombre: "Química Médica", uv: 5},
+        {codigo: "MM-112", nombre: "Matemáticas", uv: 5},
+        {codigo: "IN-101", nombre: "Inglés 1", uv: 4},
+        {codigo: "FF-101", nombre: "Filosofía", uv: 4},
+        {codigo: "EG-011", nombre: "Español General", uv: 4},
+      ]},
+      { periodo: "1er Año - 2do Periodo", clases: [
+        {codigo: "BI-123", nombre: "Biología Médica", uv: 5, req: "Ninguno"},
+        {codigo: "QQ-112", nombre: "Química Médica 2", uv: 5, req: "QQ-111, MM-112"},
+        {codigo: "FF-206", nombre: "Ética", uv: 3, req: "FF-101"},
+        {codigo: "IN-102", nombre: "Inglés 2", uv: 4, req: "IN-101"},
+        {codigo: "SC-101", nombre: "Sociología", uv: 4},
+        {codigo: "HH-101", nombre: "Historia de Honduras", uv: 4},
+      ]},
+      // Puedes seguir agregando los siguientes períodos aquí siguiendo el mismo formato
+    ];
+
+    const contenedor = document.getElementById("contenedor");
+    let claseIndex = 0;
+
+    datos.forEach(periodo => {
+      const divPeriodo = document.createElement("div");
+      divPeriodo.className = "periodo";
+      divPeriodo.innerHTML = `<h2>${periodo.periodo}</h2>`;
+
+      const divClases = document.createElement("div");
+      divClases.className = "clases";
+
+      periodo.clases.forEach(clase => {
+        const divClase = document.createElement("div");
+        divClase.className = "clase";
+        divClase.innerHTML = `
+          <div class="codigo">${clase.codigo}</div>
+          <div>${clase.nombre}</div>
+          <div class="uv">UV: ${clase.uv}</div>
+          <div class="req">${clase.req ? `Requisito: ${clase.req}` : ""}</div>
+        `;
+        divClase.dataset.index = claseIndex++;
+        divClases.appendChild(divClase);
+      });
+
+      divPeriodo.appendChild(divClases);
+      contenedor.appendChild(divPeriodo);
+    });
+
+    const clases = document.querySelectorAll(".clase");
+    let current = 0;
+    function activarSiguiente() {
+      if (clases[current]) {
+        clases[current].classList.add("activa");
+      }
+    }
+
+    clases.forEach((c, i) => {
+      c.addEventListener("click", () => {
+        if (i === current) {
+          c.classList.remove("activa");
+          c.classList.add("completada");
+          current++;
+          activarSiguiente();
+        }
+      });
+    });
+
+    activarSiguiente();
+  </script>
+</body>
+</html>
