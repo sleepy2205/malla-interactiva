@@ -75,7 +75,80 @@
         {codigo: "SC-101", nombre: "Sociología", uv: 4},
         {codigo: "HH-101", nombre: "Historia de Honduras", uv: 4},
       ]},
-      // Puedes seguir agregando los siguientes períodos aquí siguiendo el mismo formato
+      { periodo: "2do Año - 3er Periodo", clases: [
+        {codigo: "FS-210", nombre: "Biofísica", uv: 4, req: "FS-111, BI-123"},
+        {codigo: "RR-150", nombre: "Arte o Deporte", uv: 3},
+        {codigo: "MM-241", nombre: "Bioestadística", uv: 5, req: "MM-112"},
+        {codigo: "IN-103", nombre: "Inglés 3", uv: 4, req: "IN-102"},
+        {codigo: "BI-130", nombre: "Educación Ambiental", uv: 3},
+        {codigo: "SP-101", nombre: "Introducción a la Salud Pública", uv: 6, req: "SC-101, HH-101"},
+      ]},
+      { periodo: "2do Año - 4to Periodo", clases: [
+        {codigo: "AM-121", nombre: "Anatomía Macro", uv: 7},
+        {codigo: "EL-124", nombre: "Embriología", uv: 7},
+        {codigo: "NA-123", nombre: "Neuroanatomía", uv: 7},
+        {codigo: "AI-122", nombre: "Anatomía Micro", uv: 7},
+      ]},
+      { periodo: "3er Año - 5to Periodo", clases: [
+        {codigo: "FO-101", nombre: "Fisiología", uv: 11},
+        {codigo: "BQ-113", nombre: "Bioquímica", uv: 7},
+        {codigo: "PS-110", nombre: "Psicología Médica", uv: 6},
+        {codigo: "SP-211", nombre: "Salud Pública 1", uv: 6},
+      ]},
+      { periodo: "3er Año - 6to Periodo", clases: [
+        {codigo: "MB-610", nombre: "Microbiología", uv: 8},
+        {codigo: "MI-134", nombre: "Genética", uv: 5},
+        {codigo: "SF-102", nombre: "Servicio Social Formativo", uv: 6},
+        {codigo: "SP-212", nombre: "Salud Pública 2", uv: 7},
+      ]},
+      { periodo: "4to Año - 7mo Periodo", clases: [
+        {codigo: "PA-100", nombre: "Patología 1"},
+        {codigo: "PG-201", nombre: "Farmacología 1"},
+        {codigo: "FP-211", nombre: "Fisiopatología 1"},
+        {codigo: "CL-100", nombre: "Introducción a la Clínica 1"},
+      ]},
+      { periodo: "4to Año - 8vo Periodo", clases: [
+        {codigo: "PA-200", nombre: "Patología 2", uv: 7},
+        {codigo: "PG-202", nombre: "Farmacología 2", uv: 6},
+        {codigo: "FP-212", nombre: "Fisiopatología 2", uv: 6},
+        {codigo: "CL-200", nombre: "Introducción a la Clínica 2", uv: 8},
+        {codigo: "PS-112", nombre: "Psicopatología", uv: 3},
+      ]},
+      { periodo: "5to Año - 9no y 10mo Periodo", clases: [
+        {codigo: "CL-205", nombre: "Cirugía 1", uv: 7},
+        {codigo: "CL-206", nombre: "Medicina 1", uv: 7},
+        {codigo: "RD-301", nombre: "Radiología", uv: 2},
+        {codigo: "MQ-411", nombre: "Técnicas y Proc. Médicos", uv: 2},
+        {codigo: "CL-207", nombre: "Gineco Obstetricia 1", uv: 10},
+        {codigo: "CL-208", nombre: "Pediatría", uv: 10},
+        {codigo: "EC-110", nombre: "Epidemiología", uv: 4},
+        {codigo: "PS-113", nombre: "Psiquiatría", uv: 6},
+        {codigo: "SP-213", nombre: "Salud Pública 3", uv: 11},
+      ]},
+      { periodo: "6to Año - 11vo y 12vo Periodo", clases: [
+        {codigo: "CL-209", nombre: "Clínico Cirugía 2", uv: 7},
+        {codigo: "UR-403", nombre: "Urología", uv: 3},
+        {codigo: "CL-210", nombre: "Clínica Médica 2", uv: 7},
+        {codigo: "CL-211", nombre: "Clínica Gineco Obstetricia 2", uv: 10},
+        {codigo: "CL-212", nombre: "Clínica Pediatría", uv: 10},
+        {codigo: "OF-403", nombre: "Oftalmología", uv: 2},
+        {codigo: "ML-205", nombre: "Medicina Legal", uv: 2},
+        {codigo: "RD-402", nombre: "Radiología 2", uv: 3},
+        {codigo: "PS-115", nombre: "Medicina Psicosomática", uv: 2},
+        {codigo: "PS-116", nombre: "Higiene Mental", uv: 2},
+        {codigo: "NE-403", nombre: "Neurología", uv: 3},
+        {codigo: "OT-403", nombre: "Ortopedia", uv: 3},
+        {codigo: "DE-403", nombre: "Dermatología", uv: 3},
+        {codigo: "SP-214", nombre: "Salud Pública 4", uv: 8},
+        {codigo: "OR-403", nombre: "Otorrinolaringología", uv: 2},
+      ]},
+      { periodo: "7mo Año - Internado Rotatorio", clases: [
+        {codigo: "TC-501", nombre: "Terapéutica Clínica", uv: 2},
+        {codigo: "CL-213", nombre: "Internado en Cirugía", uv: 16},
+        {codigo: "CL-214", nombre: "Internado en Gineco-Obstetricia", uv: 16},
+        {codigo: "CL-215", nombre: "Internado en Medicina", uv: 16},
+        {codigo: "CL-216", nombre: "Internado en Pediatría", uv: 16},
+      ]}
     ];
 
     const contenedor = document.getElementById("contenedor");
@@ -95,7 +168,7 @@
         divClase.innerHTML = `
           <div class="codigo">${clase.codigo}</div>
           <div>${clase.nombre}</div>
-          <div class="uv">UV: ${clase.uv}</div>
+          <div class="uv">UV: ${clase.uv || "-"}</div>
           <div class="req">${clase.req ? `Requisito: ${clase.req}` : ""}</div>
         `;
         divClase.dataset.index = claseIndex++;
