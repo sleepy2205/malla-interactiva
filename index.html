@@ -3,94 +3,119 @@
 <head>
   <meta charset="UTF-8" />
   <title>Malla Interactiva Medicina</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f8;
-      padding: 20px;
-    }
-    h1, h2 {
-      color: #4b0082;
-    }
-    #contador {
-      margin-bottom: 10px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-    #reiniciar {
-      margin-bottom: 20px;
-      padding: 10px 20px;
-      background-color: #8a2be2;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    .clases {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  body {
+    background-color: #f5f0ff;
+    font-family: 'Quicksand', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2.2em;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    background-image: linear-gradient(to right, #7c4dff, #ab47bc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  #contador {
+    text-align: center;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #6a1b9a;
+  }
+
+  #reiniciar {
+    display: block;
+    margin: 10px auto 30px auto;
+    background-color: #8e24aa;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(108, 52, 131, 0.3);
+  }
+
+  .clases {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+
   .clase {
-  background-color: #6a0dad;
-  color: white;
-  border-radius: 14px;
-  padding: 18px;
-  width: 260px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
-  cursor: pointer;
-  opacity: 0.5;
-  pointer-events: none;
-  transform: scale(1);
-}
+    background-color: #a678d2;
+    color: white;
+    border-radius: 16px;
+    padding: 18px;
+    width: 250px;
+    box-shadow: 0 4px 10px rgba(72, 0, 130, 0.3);
+    transition: 0.3s;
+    cursor: pointer;
+    opacity: 0.5;
+    pointer-events: none;
+    position: relative;
+  }
 
-.clase.activa {
-  opacity: 1;
-  pointer-events: auto;
-  transform: scale(1.02);
-}
+  .clase.activa {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1.03);
+  }
 
-.clase:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
-}
+  .clase:hover {
+    box-shadow: 0 6px 14px rgba(108, 0, 130, 0.4);
+  }
 
-.clase.completada {
-  background-color: #e0e0e0;
-  color: #444;
-  text-decoration: line-through;
-  transform: scale(1);
-}
-.clases {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
+  .clase.completada {
+    background-color: #dcd0f5;
+    color: #444;
+    text-decoration: line-through;
+  }
 
-    .clase.activa {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .clase.completada {
-      background-color: #ccc;
-      text-decoration: line-through;
-      color: #333;
-    }
-    .codigo {
-      font-weight: bold;
-    }
-    .uv {
-      font-size: 14px;
-    }
-    .req {
-      font-size: 12px;
-      color: #ddd;
-    }
-  </style>
+  h2 {
+    color: #ab47bc;
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  /* Kuromi ícono */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 60px;
+    height: 60px;
+    background-image: url('https://static.wikia.nocookie.net/hellokitty/images/d/d4/Kuromi_Render.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.9;
+    z-index: 999;
+  }
+
+  /* Icono de medicina en cada clase */
+  .clase::after {
+    content: "🩺";
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 1.2em;
+  }
+</style>
 </head>
 <body>
-  <h1>Malla Interactiva - Medicina</h1>
+ <h1>🖤 Plan de Estudio Medicina UNAH 💉</h1>
   <div id="contador">UV Completadas: 0 / 409</div>
   <button id="reiniciar">Reiniciar progreso</button>
   <div id="contenedor">
