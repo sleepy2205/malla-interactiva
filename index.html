@@ -32,17 +32,42 @@
       flex-wrap: wrap;
       gap: 10px;
     }
-    .clase {
-      background-color: #6a0dad;
-      color: white;
-      border-radius: 10px;
-      padding: 15px;
-      width: 250px;
-      transition: 0.3s ease;
-      cursor: pointer;
-      opacity: 0.6;
-      pointer-events: none;
-    }
+  .clase {
+  background-color: #6a0dad;
+  color: white;
+  border-radius: 14px;
+  padding: 18px;
+  width: 260px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  opacity: 0.5;
+  pointer-events: none;
+  transform: scale(1);
+}
+
+.clase.activa {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1.02);
+}
+
+.clase:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.clase.completada {
+  background-color: #e0e0e0;
+  color: #444;
+  text-decoration: line-through;
+  transform: scale(1);
+}
+.clases {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
     .clase.activa {
       opacity: 1;
       pointer-events: auto;
@@ -168,18 +193,32 @@
     const contenedor = document.getElementById("contenedor");
     const completadas = JSON.parse(localStorage.getItem("completadas") || "[]");
 
-    datos.forEach(clase => {
-      const div = document.createElement("div");
-      div.className = "clase";
-      div.innerHTML = `
-        <div class="codigo">${clase.codigo}</div>
-        <div>${clase.nombre}</div>
-        <div class="uv">UV: ${clase.uv}</div>
-        <div class="req">${clase.req ? `Requiere: ${clase.req.join(', ')}` : ""}</div>
-      `;
-      div.dataset.codigo = clase.codigo;
-      contenedor.appendChild(div);
-    });
+   datos.forEach((clase, i) => {
+  const div = document.createElement("div");
+  div.className = "clase";
+  div.innerHTML = `
+    <div class="codigo">${clase.codigo}</div>
+    <div>${clase.nombre}</div>
+    <div class="uv">UV: ${clase.uv}</div>
+    <div class="req">${clase.req ? `Requiere: ${clase.req.join(', ')}` : ""}</div>
+  `;
+  div.dataset.codigo = clase.codigo;
+
+  // Agrupación por bloques visuales según índice
+  const grupoIndex = i < 6 ? 1 :
+                     i < 12 ? 2 :
+                     i < 18 ? 3 :
+                     i < 22 ? 4 :
+                     i < 26 ? 5 :
+                     i < 30 ? 6 :
+                     i < 34 ? 7 :
+                     i < 39 ? 8 :
+                     i < 48 ? 9 :
+                     i < 63 ? 10 : 11;
+
+  document.querySelector(`#grupo-${grupoIndex} .clases`).appendChild(div);
+});
+
 
     const clasesDOM = document.querySelectorAll(".clase");
 
