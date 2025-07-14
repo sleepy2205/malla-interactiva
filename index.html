@@ -27,9 +27,6 @@
       font-size: 16px;
       cursor: pointer;
     }
-    .periodo {
-      margin-bottom: 30px;
-    }
     .clases {
       display: flex;
       flex-wrap: wrap;
@@ -75,95 +72,3 @@
 
   <script>
     const datos = [
-      { codigo: "FS-111", nombre: "Física Médica", uv: 4 },
-      { codigo: "QQ-111", nombre: "Química Médica", uv: 5 },
-      { codigo: "MM-112", nombre: "Matemáticas", uv: 5 },
-      { codigo: "IN-101", nombre: "Inglés 1", uv: 4 },
-      { codigo: "FF-101", nombre: "Filosofía", uv: 4 },
-      { codigo: "EG-011", nombre: "Español General", uv: 4 },
-      { codigo: "BI-123", nombre: "Biología Médica", uv: 5 },
-      { codigo: "QQ-112", nombre: "Química Médica 2", uv: 5, req: ["QQ-111", "MM-112"] },
-      { codigo: "FF-206", nombre: "Ética", uv: 3, req: ["FF-101"] },
-      { codigo: "IN-102", nombre: "Inglés 2", uv: 4, req: ["IN-101"] },
-      { codigo: "SC-101", nombre: "Sociología", uv: 4 },
-      { codigo: "HH-101", nombre: "Historia de Honduras", uv: 4 },
-      { codigo: "FS-210", nombre: "Biofísica", uv: 4, req: ["FS-111", "BI-123"] },
-      { codigo: "RR-150", nombre: "Arte o Deporte", uv: 3 },
-      { codigo: "MM-241", nombre: "Bioestadística", uv: 5, req: ["MM-112"] },
-      { codigo: "IN-103", nombre: "Inglés 3", uv: 4, req: ["IN-102"] },
-      { codigo: "BI-130", nombre: "Educación Ambiental", uv: 3 },
-      { codigo: "SP-101", nombre: "Intro. Salud Pública", uv: 6, req: ["SC-101", "HH-101"] },
-      // Puedes seguir agregando el resto de clases aquí...
-    ];
-
-    const contenedor = document.getElementById("contenedor");
-    const completadas = JSON.parse(localStorage.getItem("completadas") || "[]");
-
-    datos.forEach(clase => {
-      const div = document.createElement("div");
-      div.className = "clase";
-      div.innerHTML = `
-        <div class="codigo">${clase.codigo}</div>
-        <div>${clase.nombre}</div>
-        <div class="uv">UV: ${clase.uv}</div>
-        <div class="req">${clase.req ? `Requiere: ${clase.req.join(', ')}` : ""}</div>
-      `;
-      div.dataset.codigo = clase.codigo;
-      contenedor.appendChild(div);
-    });
-
-    const clasesDOM = document.querySelectorAll(".clase");
-
-    function actualizarActivas() {
-      clasesDOM.forEach(div => {
-        const codigo = div.dataset.codigo;
-        const clase = datos.find(c => c.codigo === codigo);
-        if (!clase.req || clase.req.every(r => completadas.includes(r))) {
-          div.classList.add("activa");
-        } else {
-          div.classList.remove("activa");
-        }
-      });
-    }
-
-    function actualizarContador() {
-      let total = completadas.reduce((sum, codigo) => {
-        const clase = datos.find(c => c.codigo === codigo);
-        return sum + (clase ? clase.uv : 0);
-      }, 0);
-      document.getElementById("contador").textContent = `UV Completadas: ${total} / 409`;
-    }
-
-    clasesDOM.forEach(div => {
-      const codigo = div.dataset.codigo;
-      if (completadas.includes(codigo)) {
-        div.classList.add("completada");
-      }
-      div.addEventListener("click", () => {
-        if (!div.classList.contains("activa") && !div.classList.contains("completada")) return;
-        if (div.classList.contains("completada")) {
-          div.classList.remove("completada");
-          const index = completadas.indexOf(codigo);
-          if (index > -1) completadas.splice(index, 1);
-        } else {
-          div.classList.add("completada");
-          completadas.push(codigo);
-        }
-        localStorage.setItem("completadas", JSON.stringify(completadas));
-        actualizarActivas();
-        actualizarContador();
-      });
-    });
-
-    actualizarActivas();
-    actualizarContador();
-
-    document.getElementById("reiniciar").addEventListener("click", () => {
-      if (confirm("¿Estás segura de que quieres reiniciar tu progreso?")) {
-        localStorage.removeItem("completadas");
-        location.reload();
-      }
-    });
-  </script>
-</body>
-</html>
