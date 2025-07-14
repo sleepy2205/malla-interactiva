@@ -69,6 +69,159 @@
   <div id="contador">UV Completadas: 0 / 409</div>
   <button id="reiniciar">Reiniciar progreso</button>
   <div id="contenedor"></div>
-
   <script>
-    const datos = [
+    const datos = [      
+      { codigo: "FS-111", nombre: "Física Médica", uv: 4 },
+      { codigo: "QQ-111", nombre: "Química Médica", uv: 5 },
+      { codigo: "MM-112", nombre: "Matemáticas", uv: 5 },
+      { codigo: "IN-101", nombre: "Inglés 1", uv: 4 },
+      { codigo: "FF-101", nombre: "Filosofía", uv: 4 },
+      { codigo: "EG-011", nombre: "Español General", uv: 4 },
+
+      { codigo: "BI-123", nombre: "Biología Médica", uv: 5 },
+      { codigo: "QQ-112", nombre: "Química Médica 2", uv: 5, req: ["QQ-111", "MM-112"] },
+      { codigo: "FF-206", nombre: "Ética", uv: 3, req: ["FF-101"] },
+      { codigo: "IN-102", nombre: "Inglés 2", uv: 4, req: ["IN-101"] },
+      { codigo: "SC-101", nombre: "Sociología", uv: 4 },
+      { codigo: "HH-101", nombre: "Historia de Honduras", uv: 4 },
+
+      { codigo: "FS-210", nombre: "Biofísica", uv: 4, req: ["FS-111", "BI-123"] },
+      { codigo: "RR-150", nombre: "Arte o Deporte", uv: 3 },
+      { codigo: "MM-241", nombre: "Bioestadística", uv: 5, req: ["MM-112"] },
+      { codigo: "IN-103", nombre: "Inglés 3", uv: 4, req: ["IN-102"] },
+      { codigo: "BI-130", nombre: "Educación Ambiental", uv: 3 },
+      { codigo: "SP-101", nombre: "Intro. a la Salud Pública", uv: 6, req: ["SC-101", "HH-101"] },
+
+      { codigo: "AM-121", nombre: "Anatomía Macro", uv: 7, req: ["FS-210", "MM-241", "IN-103", "BI-130"] },
+      { codigo: "EL-124", nombre: "Embriología", uv: 7, req: ["FS-210", "MM-241", "IN-103", "BI-130"] },
+      { codigo: "NA-123", nombre: "Neuroanatomía", uv: 7, req: ["FS-210", "MM-241", "IN-103", "BI-130"] },
+      { codigo: "AI-122", nombre: "Anatomía Micro", uv: 7, req: ["FS-210", "MM-241", "IN-103", "BI-130"] },
+      // Tercer Año
+      { codigo: "FO-101", nombre: "Fisiología", uv: 11, req: ["AM-121", "EL-124", "NA-123", "AI-122"] },
+      { codigo: "BQ-113", nombre: "Bioquímica", uv: 7, req: ["AM-121", "EL-124", "NA-123", "AI-122"] },
+      { codigo: "PS-110", nombre: "Psicología Médica", uv: 6, req: ["AM-121", "EL-124", "NA-123", "AI-122"] },
+      { codigo: "SP-211", nombre: "Salud Pública 1", uv: 6, req: ["SP-101"] },
+
+      { codigo: "MB-610", nombre: "Microbiología", uv: 8, req: ["FO-101", "BQ-113", "PS-110", "SP-211"] },
+      { codigo: "MI-134", nombre: "Genética", uv: 5, req: ["FO-101", "BQ-113", "PS-110", "SP-211"] },
+      { codigo: "SF-102", nombre: "Servicio Social Formativo", uv: 6, req: ["FO-101", "BQ-113", "PS-110", "SP-211"] },
+      { codigo: "SP-212", nombre: "Salud Pública 2", uv: 7, req: ["SP-211"] },
+
+      // Cuarto Año
+      { codigo: "PA-100", nombre: "Patología 1", uv: 6, req: ["MB-610", "MI-134", "SF-102", "SP-212"] },
+      { codigo: "PG-201", nombre: "Farmacología 1", uv: 6, req: ["MB-610", "MI-134", "SF-102", "SP-212"] },
+      { codigo: "FP-211", nombre: "Fisiopatología 1", uv: 6, req: ["MB-610", "MI-134", "SF-102", "SP-212"] },
+      { codigo: "CL-100", nombre: "Intro a la Clínica 1", uv: 8, req: ["MB-610", "MI-134", "SF-102", "SP-212"] },
+
+      { codigo: "PA-200", nombre: "Patología 2", uv: 7, req: ["PA-100"] },
+      { codigo: "PG-202", nombre: "Farmacología 2", uv: 6, req: ["PG-201"] },
+      { codigo: "FP-212", nombre: "Fisiopatología 2", uv: 6, req: ["FP-211"] },
+      { codigo: "CL-200", nombre: "Intro a la Clínica 2", uv: 8, req: ["PA-100", "PG-201", "FP-211", "CL-100"] },
+      { codigo: "PS-112", nombre: "Psicopatología", uv: 3, req: ["PA-100", "PG-201", "FP-211", "CL-100"] },
+      // Quinto Año
+      { codigo: "CL-205", nombre: "Cirugía 1", uv: 7, req: ["PA-200", "PG-202", "FP-212", "CL-200"] },
+      { codigo: "CL-206", nombre: "Medicina 1", uv: 7, req: ["PA-200", "PG-202", "FP-212", "CL-200"] },
+      { codigo: "RD-301", nombre: "Radiología", uv: 2, req: ["PA-200", "PG-202", "FP-212", "CL-200"] },
+      { codigo: "MQ-411", nombre: "Técnicas y Procedimientos Médicos", uv: 2, req: ["PA-200", "PG-202", "FP-212", "CL-200"] },
+      { codigo: "CL-207", nombre: "Gineco Obstetricia 1", uv: 10, req: ["PA-200", "PG-202", "FP-212", "CL-200"] },
+      { codigo: "CL-208", nombre: "Pediatría", uv: 10, req: ["PA-200", "PG-202", "FP-212", "CL-200"] },
+      { codigo: "EC-110", nombre: "Epidemiología", uv: 4, req: ["SP-212"] },
+      { codigo: "PS-113", nombre: "Psiquiatría", uv: 6, req: ["PA-200", "PG-202", "FP-212", "CL-200"] },
+      { codigo: "SP-213", nombre: "Salud Pública 3", uv: 11, req: ["SP-212"] },
+
+      // Sexto Año
+      { codigo: "CL-209", nombre: "Clínico Cirugía 2", uv: 7, req: ["CL-205"] },
+      { codigo: "UR-403", nombre: "Urología", uv: 3, req: ["CL-206"] },
+      { codigo: "CL-210", nombre: "Clínica Médica 2", uv: 7, req: ["CL-206"] },
+      { codigo: "CL-211", nombre: "Clínica Gineco Obstetricia 2", uv: 10, req: ["CL-207"] },
+      { codigo: "CL-212", nombre: "Clínica Pediatría", uv: 10, req: ["CL-208"] },
+      { codigo: "OF-403", nombre: "Oftalmología", uv: 2, req: ["CL-206"] },
+      { codigo: "ML-205", nombre: "Medicina Legal", uv: 2, req: ["CL-206"] },
+      { codigo: "RD-402", nombre: "Radiología 2", uv: 3, req: ["RD-301"] },
+      { codigo: "PS-115", nombre: "Medicina Psicosomática", uv: 2, req: ["PS-113"] },
+      { codigo: "PS-116", nombre: "Higiene Mental", uv: 2, req: ["PS-113"] },
+      { codigo: "NE-403", nombre: "Neurología", uv: 3, req: ["CL-210"] },
+      { codigo: "OT-403", nombre: "Ortopedia", uv: 3, req: ["CL-209"] },
+      { codigo: "DE-403", nombre: "Dermatología", uv: 3, req: ["CL-210"] },
+      { codigo: "SP-214", nombre: "Salud Pública 4", uv: 8, req: ["SP-213"] },
+      { codigo: "OR-403", nombre: "Otorrinolaringología", uv: 2, req: ["CL-210"] },
+
+      // Séptimo Año
+      { codigo: "TC-501", nombre: "Terapéutica Clínica", uv: 2, req: ["CL-209", "CL-210", "CL-211", "CL-212"] },
+      { codigo: "CL-213", nombre: "Internado en Cirugía", uv: 16, req: ["CL-209"] },
+      { codigo: "CL-214", nombre: "Internado en Gineco-Obstetricia", uv: 16, req: ["CL-211"] },
+      { codigo: "CL-215", nombre: "Internado en Medicina", uv: 16, req: ["CL-210"] },
+      { codigo: "CL-216", nombre: "Internado en Pediatría", uv: 16, req: ["CL-212"] }
+    ];
+    const contenedor = document.getElementById("contenedor");
+    const completadas = JSON.parse(localStorage.getItem("completadas") || "[]");
+
+    datos.forEach(clase => {
+      const div = document.createElement("div");
+      div.className = "clase";
+      div.innerHTML = `
+        <div class="codigo">${clase.codigo}</div>
+        <div>${clase.nombre}</div>
+        <div class="uv">UV: ${clase.uv}</div>
+        <div class="req">${clase.req ? `Requiere: ${clase.req.join(', ')}` : ""}</div>
+      `;
+      div.dataset.codigo = clase.codigo;
+      contenedor.appendChild(div);
+    });
+
+    const clasesDOM = document.querySelectorAll(".clase");
+
+    function actualizarActivas() {
+      clasesDOM.forEach(div => {
+        const codigo = div.dataset.codigo;
+        const clase = datos.find(c => c.codigo === codigo);
+        if (!clase.req || clase.req.every(r => completadas.includes(r))) {
+          div.classList.add("activa");
+        } else {
+          div.classList.remove("activa");
+        }
+      });
+    }
+
+    function actualizarContador() {
+      let total = completadas.reduce((sum, codigo) => {
+        const clase = datos.find(c => c.codigo === codigo);
+        return sum + (clase ? clase.uv : 0);
+      }, 0);
+      document.getElementById("contador").textContent = `UV Completadas: ${total} / 409`;
+    }
+
+    clasesDOM.forEach(div => {
+      const codigo = div.dataset.codigo;
+      if (completadas.includes(codigo)) {
+        div.classList.add("completada");
+      }
+      div.addEventListener("click", () => {
+        if (!div.classList.contains("activa") && !div.classList.contains("completada")) return;
+        if (div.classList.contains("completada")) {
+          div.classList.remove("completada");
+          const index = completadas.indexOf(codigo);
+          if (index > -1) completadas.splice(index, 1);
+        } else {
+          div.classList.add("completada");
+          completadas.push(codigo);
+        }
+        localStorage.setItem("completadas", JSON.stringify(completadas));
+        actualizarActivas();
+        actualizarContador();
+      });
+    });
+
+    actualizarActivas();
+    actualizarContador();
+
+    document.getElementById("reiniciar").addEventListener("click", () => {
+      if (confirm("¿Estás segura de que quieres reiniciar tu progreso?")) {
+        localStorage.removeItem("completadas");
+        location.reload();
+      }
+    });
+  </script>
+</body>
+</html>
+
