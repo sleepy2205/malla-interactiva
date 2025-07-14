@@ -13,7 +13,6 @@
     padding: 20px;
     background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
   }
-
   h1 {
     text-align: center;
     font-size: 2.2em;
@@ -112,9 +111,27 @@
     right: 10px;
     font-size: 1.2em;
   }
+  #personaje-container {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#personaje-img {
+  width: 120px;
+  max-height: 120px;
+  object-fit: contain;
+  margin: 0 auto;
+  transition: 0.5s ease;
+}
+
 </style>
 </head>
 <body>
+  <body>
+  <div id="personaje-container">
+    <img id="personaje-img" src="https://i.imgur.com/FlPUZ3a.png" alt="Kuromi médica">
+  </div>
+  <h1>🖤 Plan de Estudio Medicina UNAH 💉</h1>
  <h1>🖤 Plan de Estudio Medicina UNAH 💉</h1>
   <div id="contador">UV Completadas: 0 / 409</div>
   <button id="reiniciar">Reiniciar progreso</button>
@@ -298,6 +315,34 @@
       }
     });
   </script>
+
+    <script>
+const imagenesPorGrupo = {
+  1: "https://i.imgur.com/FlPUZ3a.png", // Kuromi con estetoscopio
+  2: "https://i.imgur.com/dgYwYCR.png", // Kuromi con libro y mochila
+  3: "https://i.imgur.com/8gVnY8y.png", // Kuromi con bata blanca
+  4: "https://i.imgur.com/8gVnY8y.png",
+  5: "https://i.imgur.com/4kHNFYz.png", // Kuromi cirujana
+  6: "https://i.imgur.com/4kHNFYz.png",
+  7: "https://i.imgur.com/2jPqFyG.png", // Kuromi interna
+  8: "https://i.imgur.com/2jPqFyG.png",
+  9: "https://i.imgur.com/FtnHgtP.png", // Kuromi graduada médica
+  10: "https://i.imgur.com/FtnHgtP.png",
+  11: "https://i.imgur.com/DOs0uzB.png" // Kuromi mochilera médica
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const grupoId = entry.target.id.split("-")[1];
+      const imgSrc = imagenesPorGrupo[grupoId] || imagenesPorGrupo[1];
+      document.getElementById("personaje-img").src = imgSrc;
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[id^="grupo-"]').forEach(grupo => observer.observe(grupo));
+</script>
 </body>
 </html>
 
