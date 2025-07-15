@@ -2,16 +2,15 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Plan de Estudio Medicina UNITEC - Kuromi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
+  <title>Plan de Estudio Medicina UNAH</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       background-color: #f5f0ff;
       font-family: 'Quicksand', sans-serif;
-      color: #3b1464;
+      color: #333;
       margin: 0;
       padding: 20px;
-      background-image: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
     }
     h1 {
       text-align: center;
@@ -19,351 +18,202 @@
       font-weight: 600;
       margin-top: 20px;
       margin-bottom: 15px;
-      background-image: linear-gradient(to right, #7e57c2, #512da8);
+      background-image: linear-gradient(to right, #7c4dff, #ab47bc);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
-    #personaje-container {
-      text-align: center;
-      margin-bottom: 15px;
-    }
-    #personaje-img {
-      width: 100px;
-      max-height: 100px;
-      object-fit: contain;
-      opacity: 0.95;
-      display: inline-block;
-      transition: 0.3s ease;
-    }
-
     #contador {
       text-align: center;
       margin: 10px 0;
       font-weight: bold;
-      color: #512da8;
+      color: #6a1b9a;
     }
-
     #reiniciar {
       display: block;
       margin: 10px auto 30px auto;
-      background-color: #7e57c2;
+      background-color: #8e24aa;
       color: white;
       border: none;
       padding: 10px 18px;
       border-radius: 12px;
       cursor: pointer;
       font-weight: 600;
-      box-shadow: 0 4px 8px rgba(126, 87, 194, 0.4);
-      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 8px rgba(108, 52, 131, 0.3);
     }
-    #reiniciar:hover {
-      background-color: #512da8;
-    }
-
     .clases {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
       justify-content: center;
     }
-
     .clase {
-      background-color: #d1c4e9;
-      color: #4a148c;
+      background-color: #a678d2;
+      color: white;
       border-radius: 16px;
       padding: 18px;
       width: 250px;
-      box-shadow: 0 4px 12px rgba(99, 71, 145, 0.4);
+      box-shadow: 0 4px 10px rgba(72, 0, 130, 0.3);
       transition: 0.3s;
       cursor: pointer;
       opacity: 0.5;
       pointer-events: none;
       position: relative;
-      user-select: none;
     }
-
     .clase.activa {
       opacity: 1;
       pointer-events: auto;
       transform: scale(1.03);
     }
-
     .clase:hover {
-      box-shadow: 0 6px 18px rgba(99, 71, 145, 0.6);
+      box-shadow: 0 6px 14px rgba(108, 0, 130, 0.4);
     }
-
     .clase.completada {
-      background-color: #ede7f6;
-      color: #311b92;
+      background-color: #dcd0f5;
+      color: #444;
       text-decoration: line-through;
     }
-
-    .clase .codigo {
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .clase .uv {
-      font-weight: 600;
-      margin-top: 6px;
-    }
-
-    .clase .req {
-      font-size: 0.85em;
-      margin-top: 8px;
-      color: #512da8cc;
-    }
-
     h2 {
-      color: #512da8;
+      color: #ab47bc;
       margin-top: 40px;
       text-align: center;
     }
-
-    /* Icono médico en cada clase */
-    .clase::after {
-      content: "🩺";
-      position: absolute;
-      top: 8px;
-      right: 10px;
-      font-size: 1.2em;
+    #personaje-container {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    #personaje-img {
+      width: 120px;
+      max-height: 120px;
+      object-fit: contain;
+      margin: 0 auto;
     }
   </style>
 </head>
 <body>
-
   <div id="personaje-container">
-    <img id="personaje-img" src="https://i.imgur.com/fYs28ra.png" alt="Kuromi doctora" />
+    <img id="personaje-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA..." alt="Kuromi médica">
   </div>
-
-  <h1>💜 Plan de Estudio Medicina UNITEC - Kuromi 💜</h1>
-
-  <div id="contador">Créditos completados: 0 / 347</div>
+  <h1>🖤 Plan de Estudio Medicina UNAH 💉</h1>
+  <div id="contador">UV Completadas: 0 / 409</div>
   <button id="reiniciar">Reiniciar progreso</button>
-
   <div id="contenedor">
-    <div id="grupo-1"><h2>📘 Primer Año - Periodo 1</h2><div class="clases"></div></div>
-    <div id="grupo-2"><h2>📘 Primer Año - Periodo 2</h2><div class="clases"></div></div>
-    <div id="grupo-3"><h2>📘 Primer Año - Periodo 3</h2><div class="clases"></div></div>
-    <div id="grupo-4"><h2>📘 Primer Año - Periodo 4</h2><div class="clases"></div></div>
-
-    <div id="grupo-5"><h2>📘 Segundo Año - Periodo 5</h2><div class="clases"></div></div>
-    <div id="grupo-6"><h2>📘 Segundo Año - Periodo 6</h2><div class="clases"></div></div>
-    <div id="grupo-7"><h2>📘 Segundo Año - Periodo 7</h2><div class="clases"></div></div>
-    <div id="grupo-8"><h2>📘 Segundo Año - Periodo 8</h2><div class="clases"></div></div>
-
-    <div id="grupo-9"><h2>📘 Tercer Año - Periodo 9</h2><div class="clases"></div></div>
-    <div id="grupo-10"><h2>📘 Tercer Año - Periodo 10</h2><div class="clases"></div></div>
-    <div id="grupo-11"><h2>📘 Tercer Año - Periodo 11</h2><div class="clases"></div></div>
-    <div id="grupo-12"><h2>📘 Tercer Año - Periodo 12</h2><div class="clases"></div></div>
-
-    <div id="grupo-13"><h2>📘 Cuarto Año - Periodo 13</h2><div class="clases"></div></div>
-    <div id="grupo-14"><h2>📘 Cuarto Año - Periodo 14</h2><div class="clases"></div></div>
-    <div id="grupo-15"><h2>📘 Cuarto Año - Periodo 15</h2><div class="clases"></div></div>
-    <div id="grupo-16"><h2>📘 Cuarto Año - Periodo 16</h2><div class="clases"></div></div>
-
-    <div id="grupo-17"><h2>📘 Quinto Año - Periodo 17</h2><div class="clases"></div></div>
-    <div id="grupo-18"><h2>📘 Quinto Año - Periodo 18</h2><div class="clases"></div></div>
-    <div id="grupo-19"><h2>📘 Quinto Año - Periodo 19</h2><div class="clases"></div></div>
-    <div id="grupo-20"><h2>📘 Quinto Año - Periodo 20</h2><div class="clases"></div></div>
-
-    <div id="grupo-21"><h2>📘 Sexto Año - Periodo 21</h2><div class="clases"></div></div>
-    <div id="grupo-22"><h2>📘 Sexto Año - Periodo 22</h2><div class="clases"></div></div>
-    <div id="grupo-23"><h2>📘 Sexto Año - Periodo 23</h2><div class="clases"></div></div>
-    <div id="grupo-24"><h2>📘 Sexto Año - Periodo 24</h2><div class="clases"></div></div>
-
-    <div id="grupo-25"><h2>📘 Séptimo Año - Periodos 25 a 27</h2><div class="clases"></div></div>
+    <div id="grupo-1"><h2>📘 Primer Año - Primer Periodo</h2><div class="clases"></div></div>
+    <div id="grupo-2"><h2>📘 Primer Año - Segundo Periodo</h2><div class="clases"></div></div>
+    <div id="grupo-3"><h2>📘 Segundo Año - Tercer Periodo</h2><div class="clases"></div></div>
+    <div id="grupo-4"><h2>📘 Segundo Año - Cuarto Periodo</h2><div class="clases"></div></div>
+    <div id="grupo-5"><h2>📘 Tercer Año - Quinto Periodo</h2><div class="clases"></div></div>
+    <div id="grupo-6"><h2>📘 Tercer Año - Sexto Periodo</h2><div class="clases"></div></div>
+    <div id="grupo-7"><h2>📘 Cuarto Año - Séptimo Periodo</h2><div class="clases"></div></div>
+    <div id="grupo-8"><h2>📘 Cuarto Año - Octavo Periodo</h2><div class="clases"></div></div>
+    <div id="grupo-9"><h2>📘 Quinto Año - Noveno y Décimo Periodo</h2><div class="clases"></div></div>
+    <div id="grupo-10"><h2>📘 Sexto Año - Onceavo y Duodécimo Periodo</h2><div class="clases"></div></div>
+    <div id="grupo-11"><h2>📘 Séptimo Año - Internado Rotatorio</h2><div class="clases"></div></div>
+    <div id="grupo-12"><h2>📘 Octavo Año - Servicio Social</h2><div class="clases"></div></div>
   </div>
-
 <script>
-  const datos = [
-    {codigo:"MAT101", nombre:"Introducción al álgebra", uv:4},
-    {codigo:"MDE109", nombre:"Desarrollo humano y social", uv:4},
-    {codigo:"MDE110", nombre:"Procesos celulares y moleculares 1", uv:3},
-    {codigo:"MDE111", nombre:"Estructura y función 1", uv:4},
+const datos = [
+  // PRIMER AÑO - PRIMER PERIODO
+  { codigo: "FS-111", nombre: "Física Médica", uv: 4 },
+  { codigo: "QQ-111", nombre: "Química Médica", uv: 5 },
+  { codigo: "MM-112", nombre: "Matemáticas", uv: 5 },
+  { codigo: "IN-101", nombre: "Inglés 1", uv: 4 },
+  { codigo: "FF-101", nombre: "Filosofía", uv: 4 },
+  { codigo: "EG-011", nombre: "Español General", uv: 4 },
 
-    {codigo:"MAT102", nombre:"Algebra", uv:4, req:["MAT101"]},
-    {codigo:"MDE112", nombre:"Estilo de vida, salud y medio ambiente", uv:4},
-    {codigo:"MDE113", nombre:"Procesos celulares y moleculares 2", uv:3, req:["MDE110"]},
-    {codigo:"MDE114", nombre:"Estructura y función 2", uv:4, req:["MDE111"]},
+  // PRIMER AÑO - SEGUNDO PERIODO
+  { codigo: "BI-123", nombre: "Biología Médica", uv: 5 },
+  { codigo: "QQ-112", nombre: "Química Médica 2", uv: 5, req: ["QQ-111", "MM-112"] },
+  { codigo: "FF-206", nombre: "Ética", uv: 3, req: ["FF-101"] },
+  { codigo: "IN-102", nombre: "Inglés 2", uv: 4, req: ["IN-101"] },
+  { codigo: "SC-101", nombre: "Sociología", uv: 4 },
+  { codigo: "HH-101", nombre: "Historia de Honduras", uv: 4 },
 
-    {codigo:"MDE115", nombre:"Bases de la terapéutica medicamentosa", uv:4, req:["MDE113"]},
-    {codigo:"MDE116", nombre:"Procesos celulares y moleculares 3", uv:3, req:["MDE113"]},
-    {codigo:"MDE117", nombre:"SO 1 - Circulación, respiración, excreción y equilibrio ácido-básico 1", uv:4, req:["MDE114"]},
-    {codigo:"MDE203", nombre:"Prácticas médicas 1", uv:4, req:["MDE113","MDE114"]},
+  // SEGUNDO AÑO - TERCER PERIODO
+  { codigo: "FS-210", nombre: "Biofísica", uv: 4, req: ["FS-111", "BI-123"] },
+  { codigo: "RR-150", nombre: "Arte o Deporte", uv: 3 },
+  { codigo: "MM-241", nombre: "Bioestadística", uv: 5, req: ["MM-112"] },
+  { codigo: "IN-103", nombre: "Inglés 3", uv: 4, req: ["IN-102"] },
+  { codigo: "BI-130", nombre: "Educación Ambiental", uv: 3 },
+  { codigo: "SP-101", nombre: "Intro. a la Salud Pública", uv: 6, req: ["SC-101", "HH-101"] },
 
-    {codigo:"ESP103", nombre:"Comunicación oral y escrita", uv:4},
-    {codigo:"MDE118", nombre:"Mecanismos de agresión y defensa 1", uv:4, req:["MDE116"]},
-    {codigo:"MDE119", nombre:"SO 1 - Circulación, respiración, excreción y equilibrio ácido-básico 2", uv:4, req:["MDE117"]},
-    {codigo:"MDE216", nombre:"Prácticas médicas 2", uv:4, req:["MDE203"]},
+  // SEGUNDO AÑO - CUARTO PERIODO
+  { codigo: "AM-121", nombre: "Anatomía Macro", uv: 7 },
+  { codigo: "EL-124", nombre: "Embriología", uv: 7 },
+  { codigo: "NA-123", nombre: "Neuroanatomía", uv: 7 },
+  { codigo: "AI-122", nombre: "Anatomía Micro", uv: 7 },
 
-    {codigo:"ING105/EIEA1", nombre:"Inglés 1 / Electiva de idioma extranjero 1", uv:3},
-    {codigo:"MDE217", nombre:"Mecanismos de agresión y defensa 2", uv:4, req:["MDE118"]},
-    {codigo:"MDE218", nombre:"SO 2 - Digestión y absorción, reproducción y control endocrino 1", uv:4},
-    {codigo:"MDE219", nombre:"Prácticas médicas 3", uv:4, req:["MDE216"]},
+  // TERCER AÑO - QUINTO PERIODO
+  { codigo: "FO-101", nombre: "Fisiología", uv: 11 },
+  { codigo: "BQ-113", nombre: "Bioquímica", uv: 7 },
+  { codigo: "PS-110", nombre: "Psicología Médica", uv: 6 },
+  { codigo: "SP-211", nombre: "Salud Pública 1", uv: 6 },
 
-    {codigo:"ING106/EIEA2", nombre:"Inglés 2 / Electiva de idioma extranjero 2", uv:3, req:["ING105/EIEA1"]},
-    {codigo:"MDE220", nombre:"Mecanismos de agresión y defensa 3", uv:4, req:["MDE217"]},
-    {codigo:"MDE221", nombre:"SO 2 - Digestión y absorción, reproducción y control endocrino 2", uv:4, req:["MDE218"]},
-    {codigo:"MDE222", nombre:"Prácticas médicas 4", uv:4, req:["MDE219"]},
+  // TERCER AÑO - SEXTO PERIODO
+  { codigo: "MB-610", nombre: "Microbiología", uv: 8 },
+  { codigo: "MI-134", nombre: "Genética", uv: 5 },
+  { codigo: "SF-102", nombre: "Servicio Social Formativo", uv: 6 },
+  { codigo: "SP-212", nombre: "Salud Pública 2", uv: 7 },
 
-    {codigo:"ING107/EIEA3", nombre:"Inglés 3 / Electiva de idioma extranjero 3", uv:3, req:["ING106/EIEA2"]},
-    {codigo:"MDE223", nombre:"Mecanismos de agresión y defensa 4", uv:4, req:["MDE220"]},
-    {codigo:"MDE224", nombre:"SO 3 - Soporte, locomoción y control neural 1", uv:4},
-    {codigo:"MDE225", nombre:"Prácticas médicas 5", uv:4, req:["MDE222"]},
+  // CUARTO AÑO - SÉPTIMO PERIODO
+  { codigo: "PA-100", nombre: "Patología 1", uv: 6 },
+  { codigo: "PG-201", nombre: "Farmacología 1", uv: 6 },
+  { codigo: "FP-211", nombre: "Fisiopatología 1", uv: 6 },
+  { codigo: "CL-100", nombre: "Introducción a la Clínica 1", uv: 8 },
 
-    {codigo:"ING108/EIEA4", nombre:"Inglés 4 / Electiva de idioma extranjero 4", uv:3, req:["ING107/EIEA3"]},
-    {codigo:"MDE226", nombre:"Neurociencias y comportamiento", uv:4},
-    {codigo:"MDE227", nombre:"SO 3 - Soporte, locomoción y control neural 2", uv:4, req:["MDE224"]},
-    {codigo:"MDE228", nombre:"Prácticas médicas 6", uv:4, req:["MDE225"]},
+  // CUARTO AÑO - OCTAVO PERIODO
+  { codigo: "PA-200", nombre: "Patología 2", uv: 7, req: ["PA-100"] },
+  { codigo: "PG-202", nombre: "Farmacología 2", uv: 6, req: ["PG-201"] },
+  { codigo: "FP-212", nombre: "Fisiopatología 2", uv: 6, req: ["FP-211"] },
+  { codigo: "CL-200", nombre: "Introducción a la Clínica 2", uv: 8, req: ["PA-100", "PG-201", "FP-211", "CL-100"] },
+  { codigo: "PS-112", nombre: "Psicopatología", uv: 3, req: ["PA-100", "PG-201", "FP-211", "CL-100"] },
 
-    {codigo:"ING109/EIEB1", nombre:"Inglés 5 / Electiva de idioma extranjero 1", uv:3, req:["ING108/EIEA4"]},
-    {codigo:"MDE315", nombre:"Salud infantil y del adolescente", uv:5},
-    {codigo:"MDE316", nombre:"Salud de la mujer", uv:5},
-    {codigo:"MDE317", nombre:"Clínica integrada 1", uv:3},
+  // QUINTO AÑO - NOVENO Y DÉCIMO
+  { codigo: "CL-205", nombre: "Cirugía 1", uv: 7 },
+  { codigo: "CL-206", nombre: "Medicina 1", uv: 7 },
+  { codigo: "RD-301", nombre: "Radiología", uv: 2 },
+  { codigo: "MQ-411", nombre: "Téc. y Proc. Médicos", uv: 2 },
+  { codigo: "CL-207", nombre: "Gineco Obstetricia 1", uv: 10 },
+  { codigo: "CL-208", nombre: "Pediatría", uv: 10 },
+  { codigo: "EC-110", nombre: "Epidemiología", uv: 4 },
+  { codigo: "PS-113", nombre: "Psiquiatría", uv: 6 },
+  { codigo: "SP-213", nombre: "Salud Pública 3", uv: 11 },
 
-    {codigo:"ING110/EIEB2", nombre:"Inglés 6 / Electiva de idioma extranjero 2", uv:3, req:["ING109/EIEB1"]},
-    {codigo:"MDE318", nombre:"Sistemas de salud", uv:4},
-    {codigo:"MDE319", nombre:"Salud del adulto", uv:5},
-    {codigo:"MDE320", nombre:"Clínica integrada 2", uv:3, req:["MDE317"]},
+  // SEXTO AÑO - ONCEAVO Y DUODÉCIMO
+  { codigo: "CL-209", nombre: "Clínico Cirugía 2", uv: 7 },
+  { codigo: "UR-403", nombre: "Urología", uv: 3 },
+  { codigo: "CL-210", nombre: "Clínica Médica 2", uv: 7 },
+  { codigo: "CL-211", nombre: "Clínica Gineco Obstetricia 2", uv: 10 },
+  { codigo: "CL-212", nombre: "Clínica Pediatría", uv: 10 },
+  { codigo: "OF-403", nombre: "Oftalmología", uv: 2 },
+  { codigo: "ML-205", nombre: "Medicina Legal", uv: 2 },
+  { codigo: "RD-402", nombre: "Radiología 2", uv: 3 },
+  { codigo: "PS-115", nombre: "Medicina Psicosomática", uv: 2 },
+  { codigo: "PS-116", nombre: "Higiene Mental", uv: 2 },
+  { codigo: "NE-403", nombre: "Neurología", uv: 3 },
+  { codigo: "OT-403", nombre: "Ortopedia", uv: 3 },
+  { codigo: "DE-403", nombre: "Dermatología", uv: 3 },
+  { codigo: "SP-214", nombre: "Salud Pública 4", uv: 8 },
+  { codigo: "OR-403", nombre: "Otorrinolaringología", uv: 2 },
 
-    {codigo:"ING111/EIEB3", nombre:"Inglés 7 / Electiva de idioma extranjero 3", uv:3, req:["ING110/EIEB2"]},
-    {codigo:"MDE321", nombre:"Prevención y promoción de la salud 1", uv:4},
-    {codigo:"MDE322", nombre:"Salud del adulto mayor", uv:5},
-    {codigo:"MDE323", nombre:"Clínica integrada 3", uv:3, req:["MDE320"]},
+  // SÉPTIMO AÑO - INTERNADO
+  { codigo: "TC-501", nombre: "Terapéutica Clínica", uv: 2 },
+  { codigo: "CL-213", nombre: "Internado en Cirugía", uv: 16 },
+  { codigo: "CL-214", nombre: "Internado en Gineco-Obstetricia", uv: 16 },
+  { codigo: "CL-215", nombre: "Internado en Medicina", uv: 16 },
+  { codigo: "CL-216", nombre: "Internado en Pediatría", uv: 16 },
 
-    {codigo:"ING112/EIEB4", nombre:"Inglés 8 / Electiva de idioma extranjero 4", uv:3, req:["ING111/EIEB3"]},
-    {codigo:"MDE324", nombre:"Prevención y promoción de la salud 2", uv:4, req:["MDE321"]},
-    {codigo:"MDE325", nombre:"Salud mental", uv:5},
-    {codigo:"MDE326", nombre:"Clínica integrada 4", uv:3, req:["MDE323"]},
+  // OCTAVO AÑO - SERVICIO SOCIAL
+  { codigo: "SS-800", nombre: "Servicio Social Obligatorio", uv: 10 }
+];
+    actualizarActivas();
+    actualizarContador();
 
-    {codigo:"LCC104", nombre:"Ofimática avanzada", uv:2},
-    {codigo:"MDE407", nombre:"Medicina interna 1", uv:5},
-    {codigo:"MDE408", nombre:"Pediatría 1", uv:5},
-    {codigo:"BMD429", nombre:"Tecnologías biomédicas 1", uv:3},
-
-    {codigo:"SOC101", nombre:"Sociología", uv:3},
-    {codigo:"MDE409", nombre:"Cirugía 1", uv:5},
-    {codigo:"MDE410", nombre:"Ginecología y obstetricia 1", uv:5},
-
-    {codigo:"FIL101", nombre:"Filosofía", uv:3},
-    {codigo:"MDE411", nombre:"Urgencias y emergencias 1", uv:5},
-    {codigo:"MDE412", nombre:"Seminarios integradores 1", uv:3},
-
-    {codigo:"MDE208", nombre:"Metodología de investigación", uv:3},
-    {codigo:"MDE413", nombre:"Temas avanzados en práctica médica 1", uv:4},
-    {codigo:"MDE414", nombre:"Medicina alternativa y complementaria", uv:4},
-
-    {codigo:"HIS101", nombre:"Historia de Honduras", uv:3},
-    {codigo:"MDE508", nombre:"Medicina interna 2", uv:5, req:["MDE407"]},
-    {codigo:"MDE509", nombre:"Pediatría 2", uv:5, req:["MDE408"]},
-    {codigo:"BMD430", nombre:"Tecnologías biomédicas 2", uv:3, req:["BMD429"]},
-
-    {codigo:"ART/DEP", nombre:"Electiva arte / deporte", uv:3},
-    {codigo:"MDE510", nombre:"Cirugía 2", uv:5, req:["MDE409"]},
-    {codigo:"MDE511", nombre:"Ginecología y obstetricia 2", uv:5, req:["MDE410"]},
-
-    {codigo:"MDE212", nombre:"Generación de empresas en salud", uv:3, req:["MDE208"]},
-    {codigo:"MDE512", nombre:"Urgencias y emergencias 2", uv:5, req:["MDE411"]},
-    {codigo:"MDE513", nombre:"Seminarios integradores 2", uv:3, req:["MDE412"]},
-
-    {codigo:"MDE514", nombre:"Temas avanzados en práctica médica 2", uv:4, req:["MDE413"]},
-    {codigo:"MDE515", nombre:"Medicina legal", uv:4},
-    {codigo:"MDE516", nombre:"Salud ocupacional", uv:4},
-
-    {codigo:"MDE617", nombre:"Internado rural", uv:24},
-
-    {codigo:"MDE618", nombre:"Internado hospitalario", uv:24},
-
-    {codigo:"MDE619", nombre:"Prácticas profesionales", uv:24},
-
-    {codigo:"MDE620", nombre:"Tesis", uv:12},
-
-    {codigo:"MDE721", nombre:"Rotaciones electivas 1", uv:8},
-    {codigo:"MDE722", nombre:"Rotaciones electivas 2", uv:8},
-    {codigo:"MDE723", nombre:"Rotaciones electivas 3", uv:8},
-  ];
-
-  const totalUV = datos.reduce((acc, c) => acc + c.uv, 0);
-
-  // Igual agrupación que el código anterior
-  const gruposClases = {};
-  for(let i=1; i<=25; i++) gruposClases[i] = [];
-
-  let grupoActual = 1;
-  let contadorClases = 0;
-  datos.forEach((clase) => {
-    gruposClases[grupoActual].push(clase);
-    contadorClases++;
-    if (contadorClases >= 4) {
-      grupoActual++;
-      contadorClases = 0;
-      if(grupoActual > 25) grupoActual = 25;
-    }
-  });
-
-  let estado = JSON.parse(localStorage.getItem("kuromiMedicinaEstado")) || {};
-
-  function actualizarContador() {
-    let totalCompletadas = 0;
-    datos.forEach(c => {
-      if (estado[c.codigo]) totalCompletadas += c.uv;
+    document.getElementById("reiniciar").addEventListener("click", () => {
+      if (confirm("¿Estás segura de que quieres reiniciar tu progreso?")) {
+        localStorage.removeItem("completadas");
+        location.reload();
+      }
     });
-    document.getElementById("contador").textContent = `Créditos completados: ${totalCompletadas} / ${totalUV}`;
-  }
-
-  function puedeActivar(clase) {
-    if (!clase.req) return true;
-    return clase.req.every(r => estado[r]);
-  }
-
-  function renderizar() {
-    for(let i=1; i<=25; i++) {
-      const contenedorGrupo = document.querySelector(`#grupo-${i} .clases`);
-      contenedorGrupo.innerHTML = "";
-      gruposClases[i].forEach(clase => {
-        const div = document.createElement("div");
-        div.classList.add("clase");
-        if (estado[clase.codigo]) div.classList.add("completada");
-        if (puedeActivar(clase)) div.classList.add("activa");
-        div.innerHTML = `
-          <div class="codigo">${clase.codigo}</div>
-          <div class="nombre">${clase.nombre}</div>
-          <div class="uv">UV: ${clase.uv}</div>
-          <div class="req">${clase.req ? "Requiere: " + clase.req.join(", ") : "Sin requisitos"}</div>
-        `;
-        div.addEventListener("click", () => {
-          if (!div.classList.contains("activa")) return;
-          if (div.classList.contains("completada")) {
-            div.classList.remove("completada");
-            delete estado[clase.codigo];
-          } else {
-            div.classList.add("completada");
-            estado[clase.codigo] = true;
-          }
-          localStorage.setItem("kuromiMedicinaEstado", JSON.stringify(estado));
-          renderizar();
-          actualizarContador();
-        });
-        contenedorGrupo.appendChild(div);
-      });
-    }
-  }
-
-  document.getElementById("reiniciar").onclick = () => {
-    if(confirm("¿Quieres reiniciar tu progreso?")) {
-      estado = {};
-      localStorage.removeItem("kuromiMedicinaEstado");
-      renderizar();
-      actualizarContador();
-    }
-  };
-
-  renderizar();
-  actualizarContador();
-
-</script>
-
+  </script>
 </body>
 </html>
